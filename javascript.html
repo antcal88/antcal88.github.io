@@ -1,0 +1,203 @@
+<! DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+
+  <title>Web Portfolio: Anthony Calderon's Javascript</title>
+
+  <link type="text/css" rel="stylesheet" href="_assets/css/style.css" media="screen">
+
+  <link rel="shortcut icon" href="_assets/images/fav.png">
+   
+     <script>
+  function showAlert() { 
+  	var myText = "Uh oh! U friccin moron. You just got beaned!";
+    alert (myText);
+  }
+
+    function updateTime() { 
+
+  	// get all parts of the current time
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+
+  // add leading zero's to minutes and seconds
+  if (minutes < 10) { 
+    minutes = '0' + minutes;
+  }
+  if (seconds < 10) { 
+    seconds = '0' + seconds;
+  }       
+
+  // get time of day (am or pm) 
+  if (hours >= 12 && hours < 24) { 
+    var timeOfDay = 'pm';
+  }
+  else { 
+    var timeOfDay = 'am'; 
+  }
+        
+  // convert hours from 24-hour time to 12-hour time
+  if (hours > 12) { 
+    hours = hours - 12;
+  }
+    // join them together into a character string named "currentTime"
+    var currentTime = hours + ':' + minutes + ':' + seconds + '  ' + timeOfDay;
+      hours = 24;
+      minutes = 7;
+      seconds = 3;
+    // get the clock div 
+    var myClock = document.getElementById('clock');
+    
+    // write the currentTime string to the clock div
+    myClock.innerHTML = currentTime;
+  }
+
+    function toggleClock() { 
+    // get the clock 
+    var myClock = document.getElementById('clock');
+
+    // get the current value of the clock's display property 
+    var displaySetting = myClock.style.display;
+
+    // also get the clock button, so we can change what it says 
+    var clockButton = document.getElementById('clockButton');
+        
+    // now toggle the clock and the button text, depending on current state
+    if (displaySetting == 'block') { 
+      // clock is visible. hide it
+      myClock.style.display = 'none';
+      // change button text
+      clockButton.innerHTML = 'Show clock';
+    }
+    else { 
+      // clock is hidden. show it 
+      myClock.style.display = 'block';
+      // change button text
+      clockButton.innerHTML = 'Hide clock';
+    }
+  }  
+
+  function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+  </script>
+ </head>
+ <body onload="setInterval('updateTime()',1000)">
+
+ <div id="banner">
+   		<img src="_assets/images/ban.png" alt="GraphicDesign">
+   	</div>
+
+   	<nav>
+ 		<ul>
+ 			<li>
+ 				<a href="index.html">Home</a>
+ 			</li>
+
+
+ 			<li>
+ 				<a href="accessibility.html">Accessibility</a>
+ 			</li>
+ 			
+
+ 			<li>
+ 				<a href="usability.html">Usability</a>
+ 			</li>
+
+
+			<li>
+				<a href="graphics.html">Graphics</a>
+			</li>
+
+
+ 			<li>
+ 				<a href="tools.html">Tools</a>
+ 			</li>
+
+
+ 			<li>
+ 				<a href="javascript.html">JavaScript</a>
+ 			</li>
+
+
+ 			<li>
+ 				<a href="video.html">Video</a>
+ 			</li>
+ 		</ul>
+ 	</nav>
+  
+ 	<button onclick="showAlert()">click me to die lol</button>
+
+
+ 	<div id="clock">
+ 		
+ 	</div>
+
+  <button onclick="toggleClock()" id="clockButton">Show clock</button>
+
+
+
+<form name="myForm" action="/action_page_post.php"
+
+	onsubmit="return validateForm()" method="post">
+
+	Name: <input type="text" name="fname">
+
+	<input type="submit" value="Submit">
+
+</form>
+
+<div class="group method">
+
+            <label for="r-method-pickup">Choose your Gender:</label>
+
+            <br>
+            <input type="radio" value="pickup" name="r_method" id="r-boy" 
+
+            checked=""> 
+            <label for="r-method-pickup">Male</label>
+
+            <br>
+          	<input type="radio" value="usps" name="r_method" id="r-girl"> <label 
+
+          	for="r-method-usps">Female</label>
+          	<br>
+            <input type="radio" value="ups" name="r_method" id="r-other"> <label for="r-method-ups">Attack Helicopter</label>
+        </div>
+
+            <div class="like">
+            <label for="s-answer">Do you like x?:</label>
+                 <select id="s-answer">
+                    <option value="">- answer -</option>
+                    <option value="YA">Yea boiiii</option>
+                    <option value="NA">Nah boiiii</option>
+                    <option value="WE">Maybe</option>
+ 
+                </select>
+        </div>
+
+        <div class="group special">
+            <label for="c-special-gift">Of the following, which do you like:</label>
+            	<br>
+            <input type="checkbox" value="1" name="c-me" id="c-me"> 
+            <label for="c-me">Me</label>
+            	<br>
+            <input type="checkbox" value="2" name="c-myself" id="c-myself"> 
+            <label for="c-myself">Myself</label>
+            	<br>
+            <input type="checkbox" value="3" name="c-i" id="c-i"> 
+            <label for="c-i">I</label>
+        </div>
+        <form>
+        	<input type="submit">
+        </form>
+
+ </body>
+</html>
